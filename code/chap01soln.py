@@ -10,7 +10,7 @@ from __future__ import print_function, division
 import numpy as np
 import sys
 
-import nsfg
+import workshop.nsfg as nsfg
 import thinkstats2
 
 
@@ -48,7 +48,7 @@ def ValidatePregnum(resp):
 
     # make the map from caseid to list of pregnancy indices
     preg_map = nsfg.MakePregMap(preg)
-    
+
     # iterate through the respondent pregnum series
     for index, pregnum in resp.pregnum.items():
         caseid = resp.caseid[index]

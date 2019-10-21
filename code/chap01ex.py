@@ -19,6 +19,11 @@ def main(script):
 
     script: string script name
     """
+    dct = thinkstats2.ReadStataDct('2002FemResp.dct')
+    df = dct.ReadFixedWidth('2002FemResp.dat.gz', compression='gzip')
+    print(df.pregnum.value_counts().sort_index())
+    dct = nsfg.MakePregMap(df)
+    print(dct)
     print('%s: All tests passed.' % script)
 
 
