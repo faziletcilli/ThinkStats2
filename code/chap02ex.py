@@ -21,7 +21,13 @@ def Mode(hist):
 
     returns: value from Hist
     """
-    return 0
+    highest = 0
+    mode = 0
+    for (value, freq) in hist.Items():
+        if freq > highest:
+            mode = value
+            highest = freq
+    return mode
 
 
 def AllModes(hist):
@@ -31,7 +37,7 @@ def AllModes(hist):
 
     returns: iterator of value-freq pairs
     """
-    return []
+    return sorted(hist.Items(), key=lambda x: x[1], reverse=True)
 
 
 def main(script):
@@ -42,7 +48,7 @@ def main(script):
     live, firsts, others = first.MakeFrames()
     hist = thinkstats2.Hist(live.prglngth)
 
-    # test Mode    
+    # test Mode
     mode = Mode(hist)
     print('Mode of preg length', mode)
     assert mode == 39, mode
